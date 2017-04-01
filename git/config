@@ -1,0 +1,18 @@
+; pellettiero's dotfiles - .gitconfig
+
+
+; Details
+[user]
+	name = Michele Pellegrini
+	email = pellettiero@users.noreply.github.com
+; Push mode
+[push]
+	default = simple
+; Clone with git:// or https:// but push with SSH
+[url "git@github.com:"]
+    pushInsteadOf = git://github.com/
+    pushInsteadOf = https://github.com/
+    pushInsteadOf= https://gist.github.com/
+; Set less as Git pager
+[core]
+	pager = less

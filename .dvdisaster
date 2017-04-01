@@ -1,0 +1,64 @@
+# file di configurazione di dvdisaster-0.79.5
+# Questo file è stato generato automaticamente
+# e sarà sovrascritto ogni volta che verrà eseguito dvdisaster
+
+last-device:       /dev/sr0
+last-image:        /media/Dati/iso2.iso
+last-ecc:          /home/pellettiero/medium.ecc
+
+adaptive-read:     0
+auto-suffix:       0
+bd-size1:          11826176
+bd-size2:          23652352
+cache-size:        32
+cd-size:           359424
+codec-threads:     4
+confirm-deletion:  1
+dao:               0
+defective-dump:    0
+defective-dir:     /home/pellettiero
+defective-prefix:  sector-
+dotfile-version:   7905
+dvd-size1:         2295104
+dvd-size2:         4171712
+ecc-target:        0
+eject:             0
+encoding-algorithm:0
+encoding-io-strategy:1
+examine-rs02:      0
+examine-rs03:      0
+fill-unreadable:   -1
+ignore-fatal-sense: 0
+ignore-iso-size:   0
+internal-attempts: -1
+jump:              16
+log-file-enabled:  0
+log-file:          /home/pellettiero/.dvdisaster.log
+medium-size:       0
+method-name:       RS03
+max-read-attempts: 1
+min-read-attempts: 1
+old-missing-sector-marker: 0
+pdf-viewer:        xdg-open
+prefetch-sectors:  32
+raw-mode:          32
+read-and-create:   0
+read-medium:       0
+read-raw:          1
+reverse-cancel-ok: 0
+spinup-delay:      10
+unlink:            0
+verbose:           0
+welcome-msg:       1
+
+positive-text:       008000
+negative-text:       ff0000
+bar-color:           ff0000
+log-color:           ff00ff
+curve-color:         0000ff
+defective-sector:    ff0000
+bad-checksum-sector: ffc000
+good-sector:         00db00
+ignored-sector:      0000ff
+highlit-sector:      ffffff
+present-sector:      008000

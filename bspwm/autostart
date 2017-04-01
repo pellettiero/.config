@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Start polybar
+killall -q polybar
+while pgrep -x polybar >/dev/null; do sleep 1; done
+polybar cafe &
+
+feh --no-fehbg --bg-fill --randomize Pictures/* &
+# Auto screenlock
+xsecurelock
+

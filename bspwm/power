@@ -1,0 +1,14 @@
+#!/bin/bash
+
+res=$(echo -e "LOGOUT\nREBOOT\nPOWEROFF" | rofi -p "> " -dmenu)
+
+if [ "$res" = "LOGOUT" ]; then
+	bspc quit 1 && pkill lemonbar
+fi
+if [ "$res" = "REBOOT" ]; then
+	systemctl reboot
+fi
+if [ "$res" = "POWEROFF" ]; then
+	systemctl poweroff
+fi
+exit 0
