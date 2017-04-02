@@ -10,6 +10,7 @@ xset s off &  # screen blanking off
 xset -b & # audible bell off
 xset r rate 180 25 & # key repeat rate
 xset m 3 4 & # mouse speed
+setxkbmap it
 
 # Compositing manager
 compton -b --config ~/.config/compton/compton.conf &

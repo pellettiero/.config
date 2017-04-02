@@ -37,6 +37,7 @@ export LESSCHARSET="UTF-8"
 export LESSHISTFILE="-"
 
 export AURDEST="/tmp/makepkg"
+export PYTHONOPTIMIZE=2
 
 # Create chrome_cache and qutebrowser_cache in /tmp
 [[ ! -d /tmp/chrome_cache/ ]] && mkdir /tmp/chrome_cache
