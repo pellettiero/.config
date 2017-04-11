@@ -1,5 +1,7 @@
 ! The following options can be reloaded via USR1 signal.
-st.font:         Hack:pixelsize=12:antialias=true:autohint=true;
+!st.font:        Hack:size=10:antialias=true:autohint=true;
+!st.font:        Input Mono:style=Medium:size=10:antialias=true:autohint=true;
+st.font:         Hermit:style=medium:size=10:antialias=true:autohint=true;
 ! Available cursor values: 2 4 6 7 = █ _ | ☃ ( 1 3 5 are blinking versions)
 st.cursorshape:  2
 st.cursorthickness:  2
@@ -14,8 +16,8 @@ st.bellvolume:   0
 st.opacity: 255
 
 ! Rofi
+rofi.font: Hermit Medium 10
 rofi.color-enabled: true
-rofi.font:            Input Sans 9
 rofi.terminal:        st
 rofi.fuzzy:           true
 rofi.modi:                           run

@@ -6,6 +6,9 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 polybar cafe &
 
 feh --no-fehbg --bg-fill --randomize Pictures/* &
+xset r rate 180 25 & # key repeat rate
+xset m 3 4 & # mouse speed
+setxkbmap it
 # Auto screenlock
-xsecurelock
+csxlock -u "Welcome, pellettiero!" -b "#000000" -o "#FFFFFF"
 
