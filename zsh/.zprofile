@@ -29,15 +29,19 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export BSPWM_SOCKET="$XDG_RUNTIME_DIR/bspwm-socket"
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
 
-# nvim MANPAGER
-hash nvim 2>/dev/null && export MANPAGER="nvim -u NORC -c 'set ft=man' -"
+export MANPAGER="less -+X -is"
 
 export LESS="-FiQMXR"
 export LESSCHARSET="UTF-8"
 export LESSHISTFILE="-"
+export LESSOPEN="| pygmentize -O style=native -f console256 -g %s"
 
 export AURDEST="/tmp/makepkg"
 export PYTHONOPTIMIZE=2
+
+# Android development
+export ANDROID_HOME=$HOME/Documents/android-sdk
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
 # Create chrome_cache and qutebrowser_cache in /tmp
 [[ ! -d /tmp/chrome_cache/ ]] && mkdir /tmp/chrome_cache

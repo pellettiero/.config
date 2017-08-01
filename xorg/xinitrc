@@ -24,4 +24,5 @@ unclutter -root &
 xsetroot -cursor_name left_ptr &
 wmname LG3D
 
-exec bspwm
+# exec bspwm
+exec xmonad

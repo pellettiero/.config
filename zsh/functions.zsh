@@ -145,7 +145,7 @@ u() {
 ## Added by Master Password
 mpw() {
     _copy() {
-        xclip -selection primary
+        xclip -r -l 1 -selection clipboard
         echo >&2 "Copied!"
     }
 

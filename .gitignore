@@ -13,6 +13,8 @@
 /systemd/**/*.wants
 /systemd/**/dbus-org.gnome.*.service
 /qutebrowser/quickmarks
+/qutebrowser/bookmarks/urls
+/qutebrowser/qsettings/*
 /QtProject*
 /Trolltech.conf
 /Hardcoded*

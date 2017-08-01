@@ -86,7 +86,7 @@ bspc rule -a google-chrome-stable private=on
 #bspc desktop II --layout monocle
 
 bspc rule -a scratchpad sticky=on state=floating
-bspc rule -a polybar manage=off border=off
+bspc rule -a polybar layer=above manage=on border=off
 
 ##  Autogap adjusts windowgap automatically according to the number of
 ##  windows on the desktop. Using it disables negative window gap.
@@ -106,7 +106,4 @@ bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 #bspc config external_rules_command /usr/bin/adjust-new-window
 
 ##Autostart apps
-#Keybindings daemon
-sxhkd &
-#Source autostartfile. Uncomment this if you use bspwm-git
 "$XDG_CONFIG_HOME"/bspwm/autostart

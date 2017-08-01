@@ -12,13 +12,16 @@ super + F1
 Super_L
     killall -CONT polybar && xdotool search --class polybar windowmap
 @Super_L
-    sleep 3 && xdotool search --class polybar windowunmap && bspc config top_padding 0 && killall -STOP polybar
+    sleep 10 && xdotool search --class polybar windowunmap && bspc config top_padding 0 && killall -STOP polybar
 
 #
 # Window manipulation
 # ______________
 
 # Close window
+super + BackSpace
+	bspc node -c
+
 super + x
 	bspc node -c
 
@@ -99,8 +102,8 @@ alt + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
 # Move current window to largest space or preselected area if there is one.
-super + Return
-    windowpromoter
+# super + Return
+    # windowpromoter
 
 # Create a new "master area", splitting the whole desktop instead of just windows.
 alt + Return
@@ -281,13 +284,16 @@ super + Pause
        csxlock -u "Welcome, pellettiero!" -b "#000000" -o "#FFFFFF"
 
 super + shift + Return
-	google-chrome-stable
+    google-chrome-stable
+
+super + Return
+	"$TERMINAL"
 
 super + z
 	"$TERMINAL"
 
 F12
-    "$HOME/.local/bin/drawer.sh" scratch top 99% 20% st -c scratchpad
+    tdrop -a st
 
 super + shift + e
 	spacefm

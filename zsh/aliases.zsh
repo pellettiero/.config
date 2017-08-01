@@ -10,8 +10,8 @@ alias upgrade-all='echo "Syncing mirrors and upgrading system..." && \
   echo "Syncing and upgrade complete."'
 
 # CUPS
-alias start_cups='sudo systemctl start org.cups.cupsd.service'
-alias stop_cups='sudo systemctl stop org.cups.cupsd.service'
+alias cups-start='sudo systemctl start org.cups.cupsd.service'
+alias cups-stop='sudo systemctl stop org.cups.cupsd.service'
 
 # Alias "git push" to ask for SSH password before pushing
 alias gp='eval $(keychain --dir "$XDG_CONFIG_HOME/keychain" --eval --agents ssh -Q --quiet id_ed25519) && git push'
@@ -23,4 +23,3 @@ alias s='git status'
 # misc aliases
 alias ccat='pygmentize -O style=native -f console256 -g'
 alias pacnew='sudo DIFFPROG="nvim -d" pacdiff'
-alias qutebrowser='qutebrowser --backend webengine'
