@@ -6,7 +6,7 @@ alias update-mirrors='echo "Syncing mirrors..." && \
   echo "Syncing complete."'
 alias upgrade-all='echo "Syncing mirrors and upgrading system..." && \
   update-mirrors && \
-  pacaur -Syu && \
+  yay -Syu && \
   echo "Syncing and upgrade complete."'
 
 # CUPS

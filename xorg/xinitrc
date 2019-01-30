@@ -8,7 +8,7 @@ xrdb -load "$XDG_CONFIG_HOME/xorg/xresources" &
 xset -dpms &
 xset s off &  # screen blanking off
 xset -b & # audible bell off
-xset r rate 180 25 & # key repeat rate
+xset r rate 150 50 & # key repeat rate
 xset m 3 4 & # mouse speed
 setxkbmap it
 
@@ -24,5 +24,4 @@ unclutter -root &
 xsetroot -cursor_name left_ptr &
 wmname LG3D
 
-# exec bspwm
-exec xmonad
+exec i3

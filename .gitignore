@@ -8,7 +8,7 @@
 /gtk-2.0/gtkfilechooser.ini
 /menus
 /mps-youtube
-/mpv/watch_later
+/mpv
 /spacefm
 /systemd/**/*.wants
 /systemd/**/dbus-org.gnome.*.service
@@ -22,7 +22,8 @@
 /.x
 /filezilla
 /keychain
-/nvim
+/nvim/env
+/nvim/plugged
 /zsh/.zcomp*
 /zsh/.zhistory
 /zsh/.zlogin
@@ -31,3 +32,16 @@
 /ranger/bookmarks
 /ranger/history
 /ranger/tagged
+/gconf
+/ghostwriter
+/GIMP
+/*osty*
+/rclone
+/redshift
+/vifm/vifminfo
+/yay
+/zathura
+/Code/*
+!/Code/User
+/Code/User/*Storage
+/polybar/sleep.pid

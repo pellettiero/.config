@@ -124,37 +124,45 @@ clone() {
 
 # Fast mounting and unmounting with udevil
 m() {
-  echo "udevil mount /dev/$1"
-  udevil mount /dev/"$1"
+  if [[ $1 = win ]]; then
+    echo "Mounting Windows partition..."
+    udevil mount /dev/sda3
+  else
+    echo "Mounting /dev/"$1"..."
+    udevil mount /dev/"$1"
+  fi
   echo mounted media:
   mount | LANG=C grep --color=auto media
 }
 
 u() {
-  echo "udevil umount /dev/$1"
-  udevil umount /dev/"$1"
-  if [[ $1 = sr0 ]]
-  then
+  if [[ $1 = sr0 ]]; then
     echo eject /dev/sr0
     eject /dev/sr0
+  elif [[ $1 = win ]]; then
+    echo "Umounting Windows partition..."
+    udevil umount /dev/sda3
+  else
+    echo "Umounting /dev/"$1"..."
+    udevil umount /dev/"$1"
   fi
   echo mounted media:
   mount | LANG=C grep --color=auto media
 }
 
 ## Added by Master Password
-mpw() {
-    _copy() {
-        xclip -r -l 1 -selection clipboard
-        echo >&2 "Copied!"
-    }
+# mpw() {
+#     _copy() {
+#         xclip -r -l 1 -selection clipboard
+#         echo >&2 "Copied!"
+#     }
 
-    # Empty the clipboard
-    :| _copy 2>/dev/null
+#     # Empty the clipboard
+#     :| _copy 2>/dev/null
 
-    # Ask for the user's name and password if not yet known.
-    MP_FULLNAME=${MP_FULLNAME:-$(ask 'Your Full Name:')}
+#     # Ask for the user's name and password if not yet known.
+#     MP_FULLNAME=${MP_FULLNAME:-$(ask 'Your Full Name:')}
 
-    # Start Master Password and copy the output.
-    printf %s "$(MP_FULLNAME=$MP_FULLNAME command mpw "$@")" | _copy
-}
+#     # Start Master Password and copy the output.
+#     printf %s "$(MP_FULLNAME=$MP_FULLNAME command mpw "$@")" | _copy
+# }

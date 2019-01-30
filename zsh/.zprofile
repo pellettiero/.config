@@ -15,7 +15,7 @@ export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
 export XINITRC="$XDG_CONFIG_HOME/xorg/xinitrc"
 export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
 
-export TERMINAL='st'
+export TERMINAL='kitty'
 export EDITOR='nvim'
 export VISUAL='nvim'
 
@@ -38,6 +38,7 @@ export LESSOPEN="| pygmentize -O style=native -f console256 -g %s"
 
 export AURDEST="/tmp/makepkg"
 export PYTHONOPTIMIZE=2
+export PIPENV_VENV_IN_PROJECT=1
 
 # Android development
 export ANDROID_HOME=$HOME/Documents/android-sdk

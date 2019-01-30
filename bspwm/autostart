@@ -9,7 +9,7 @@ feh --no-fehbg --bg-fill --randomize Pictures/* &
 xset r rate 180 25 & # key repeat rate
 xset m 3 4 & # mouse speed
 setxkbmap it
-sxhkd &
+# sxhkd &
 # Auto screenlock
 csxlock -u "Welcome, pellettiero!" -b "#000000" -o "#FFFFFF"
 

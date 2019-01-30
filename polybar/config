@@ -49,39 +49,41 @@ module-margin-left = 1
 module-margin-right = 1
 
 ; font-0 = "Noto Sans UI:pixelsize=9;0"
-font-0 = "Product Sans:style=Regular:pixelsize=9;0"
-font-1 = "Wuncon Siji:antialias=false;pixelsize=8;1"
+font-0 = "Google Sans:style=Regular:pixelsize=9;0"
+font-1 = "Material Icons:antialias=true;pixelsize=8;2"
 font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 
-modules-left = ewmh bspwm
-; modules-center = title
+modules-left = i3
+modules-center = xwindow
 ;modules-right = filesystem xbacklight volume xkeyboard memory cpu wlan eth battery temperature date powermenu
 
-modules-right = volume battery date
+modules-right = alsa battery date
 
 tray-position = right
 tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
 
-wm-restack = bspwm
+; wm-restack = bspwm
 ;wm-restack = i3
 
-;override-redirect = true
-
+override-redirect = false
+enable-ipc = true
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+cursor-click = pointer
 
-[module/title]
+[module/xwindow]
 type = internal/xwindow
 ; Available tags:
 ;   <label> (default)
+format = <label>
 ;format-background = #f00
-;format-foreground = #000
-;format-padding = 4
+; format-foreground = #000
+format-padding = 4
 
 ; Available tokens:
 ;   %title%
@@ -89,35 +91,11 @@ type = internal/xwindow
 label = %title%
 label-maxlen = 100
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+; Used instead of label when there is no window title
+; Available tokens:
+;   None
+label-empty = 
+label-empty-foreground = #707880
 
 [module/bspwm]
 type = internal/bspwm
@@ -185,71 +163,6 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
-[module/ewmh]
-type = internal/xworkspaces
-
-; Only show workspaces defined on the same output as the bar
-;
-; Useful if you want to show monitor specific workspaces
-; on different bars
-;
-; Default: false
-pin-workspaces = false
-
-; Create click handler used to focus desktop
-; Default: true
-enable-click = false
-
-; Create scroll handlers used to cycle desktops
-; Default: true
-enable-scroll = false
-icon-0 = General
-icon-1 = Work
-icon-2 = "Work 2"
-icon-3 = System
-icon-4 = Monitor
-icon-5 = Float
-icon-6 = ReWrite
-icon-7 = Temp
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
-
 [module/wlan]
 type = internal/network
 interface = wlp5s0
@@ -272,22 +185,6 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/eth]
-type = internal/network
-interface = enp4s0
-interval = 3.0
-
-;format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
 [module/date]
 type = internal/date
 interval = 5
@@ -298,42 +195,85 @@ date-alt = " %d/%m/%Y"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+; format-prefix = 
+; format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #0a6cf5
 
 label = %date% %time%
 
-[module/volume]
-type = internal/volume
+[module/alsa]
+type = internal/alsa
 
-;format-prefix = " "
+; Soundcard to be used
+; Usually in the format hw:# where # is the card number
+; You can find the different card numbers in `/proc/asound/cards`
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
 
-format-volume = <label-volume> <bar-volume>
-;format-volume = <bar-volume>
-label-volume = ""
-label-volume-foreground = ${root.foreground}
+; Name of the master, speaker and headphone mixers
+; Use the following command to list available mixer controls:
+; $ amixer scontrols | sed -nr "s/.*'([[:alnum:]]+)'.*/\1/p"
+; If master, speaker or headphone-soundcard isn't the default, 
+; use `amixer -c # scontrols` instead where # is the number 
+; of the master, speaker or headphone soundcard respectively
+;
+; Default: Master
+master-mixer = Master
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = mute
+; Optionally define speaker and headphone mixers
+; Default: none
+speaker-mixer = Speaker
+; Default: none
+headphone-mixer = Headphone
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+; NOTE: This is required if headphone_mixer is defined
+; Use the following command to list available device controls
+; $ amixer controls | sed -r "/CARD/\!d; s/.*=([0-9]+).*name='([^']+)'.*/printf '%3.0f: %s\n' '\1' '\2'/e" | sort
+; You may also need to use `amixer -c # controls` as above for the mixer names
+; Default: none
+headphone-id = 9
+
+; Use volume mapping (similar to amixer -M and alsamixer), where the increase in volume is linear to the ear
+; Default: false
+mapped = true
+
+; Interval for volume increase/decrease (in percent points) (unreleased)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+label-muted =  muted
+label-muted-foreground = #66
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+;ramp-headphones-0 = 
+;ramp-headphones-1 = 
 
 [module/battery]
 type = internal/battery
@@ -347,66 +287,20 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 ;format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = "full"
 format-full-prefix-foreground = ${colors.foreground-alt}
 ;format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = zero
+ramp-capacity-1 = one
+ramp-capacity-2 = two
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = charge0
+animation-charging-1 = charge1
+animation-charging-2 = charge2
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = poweroff
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = %{F#f00}reboot?
-menu-1-0-exec = menu-open-0
-menu-1-1 = OK
-menu-1-1-exec = reboot
-
-menu-2-0 = %{F#f00}poweroff?
-menu-2-0-exec = menu-open-0
-menu-2-1 = OK
-menu-2-1-exec = poweroff
 
 [settings]
 screenchange-reload = true
@@ -416,7 +310,7 @@ screenchange-reload = true
 ;compositing-border = over
 
 [global/wm]
-margin-top = 0
+margin-top = 1
 margin-bottom = 0
 
 ; vim:ft=dosini
